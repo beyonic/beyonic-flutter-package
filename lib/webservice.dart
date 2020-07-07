@@ -9,9 +9,19 @@ class Resource<T> {
 }
 
 class Webservice {
-  Future<T> load<T>(Resource<T> resource, {apiKey, limit=0, offset=0}) async {
+  String apiBaseUrl = "https://app.beyonic.com/api/";
+
+  Future<T> load<T>(Resource<T> resource, {apiKey, limit=20, offset=0, object_id}) async {
     Map<String, String> headers = {"Content-type": "application/json", "Authorization": "Token " + apiKey};
-    final response = await http.get("https://app.beyonic.com/api/" + resource.path+"?limit=" + apiKey+ "&offset=" + offset.toString(), headers: headers);
+    String url;
+    if (object_id == null){
+      // We are loading a list view
+      url = apiBaseUrl + resource.path + "?limit=" + limit.toString()+ "&offset=" + offset.toString();
+    }else{
+      // We are loading a read view
+      url = apiBaseUrl + resource.path + "/" + object_id;
+    }
+    final response = await http.get(url, headers: headers);
     if(response.statusCode == 200) {
       return resource.parse(response);
     } else {

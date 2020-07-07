@@ -29,7 +29,6 @@ class Collection {
   }
 
   static Resource<List<Collection>> get all {
-
     return Resource(
         path: "collections",
         parse: (response) {
@@ -38,6 +37,16 @@ class Collection {
           return list.map((model) => Collection.fromJson(model)).toList();
         }
     );
-
   }
+
+  static Resource<Collection> get single {
+    return Resource(
+        path: "collections",
+        parse: (response) {
+          final result = json.decode(response.body);
+          return Collection.fromJson(result);
+        },
+    );
+  }
+
 }

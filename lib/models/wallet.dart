@@ -29,4 +29,15 @@ class Wallet {
     );
 
   }
+
+  static Resource<Wallet> get single {
+    return Resource(
+      path: "accounts",
+      parse: (response) {
+        final result = json.decode(response.body);
+        return Wallet.fromJson(result);
+      },
+    );
+  }
+
 }

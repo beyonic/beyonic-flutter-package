@@ -47,6 +47,15 @@ class Payment {
           return list.map((model) => Payment.fromJson(model)).toList();
         }
     );
+  }
 
+  static Resource<Payment> get single {
+    return Resource(
+      path: "payments",
+      parse: (response) {
+        final result = json.decode(response.body);
+        return Payment.fromJson(result);
+      },
+    );
   }
 }
