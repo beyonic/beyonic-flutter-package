@@ -21,7 +21,7 @@ class BeyonicService {
       {limit = 20, offset = 0, object_id}) async {
     Map<String, String> headers = {
       "Content-type": "application/json",
-      "Authorization": "Token " + apiKey
+      "Authorization": "Token " + this.apiKey
     };
     String url;
     if (object_id == null) {
@@ -49,7 +49,7 @@ class BeyonicService {
       apiBaseUrl + resource.path,
       headers: {
         "Content-type": "application/json",
-        "Authorization": "Token " + apiKey
+        "Authorization": "Token " + this.apiKey
       },
       body: jsonEncode(params),
     );
