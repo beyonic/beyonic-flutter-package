@@ -17,10 +17,18 @@ class Payment {
   final Iterable phoneNos;
   final String path = "payments";
 
-  Payment({this.id, this.description, this.amount, this.currency, this.state,
-    this.lastError, this.pausedReason, this.modified, this.paymentType, this.chargedFee,
-    this.phoneNos
-  });
+  Payment(
+      {this.id,
+      this.description,
+      this.amount,
+      this.currency,
+      this.state,
+      this.lastError,
+      this.pausedReason,
+      this.modified,
+      this.paymentType,
+      this.chargedFee,
+      this.phoneNos});
 
   factory Payment.fromJson(Map<String, dynamic> payment) {
     return Payment(
@@ -34,20 +42,21 @@ class Payment {
       modified: payment['modified'],
       paymentType: payment['payment_type'],
       chargedFee: payment['charged_fee'].toString(),
-      phoneNos: json.decode(payment['phone_nos'].toString()).map((model) => Recipient.fromJson(model)).toList(),
+      phoneNos: json
+          .decode(payment['phone_nos'].toString())
+          .map((model) => Recipient.fromJson(model))
+          .toList(),
     );
   }
 
   Resource<List<Payment>> get all {
-
     return Resource(
         path: this.path,
         parse: (response) {
           final result = json.decode(response.body);
           Iterable list = result['results'];
           return list.map((model) => Payment.fromJson(model)).toList();
-        }
-    );
+        });
   }
 
   Resource<Payment> get single {
@@ -66,7 +75,6 @@ class Payment {
         parse: (response) {
           final model = json.decode(response.body);
           return Payment.fromJson(model);
-        }
-    );
+        });
   }
 }

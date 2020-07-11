@@ -8,12 +8,12 @@ You can call the various objects as outlined below:
 
 ```dart
 // load list of payments
-Future List<Payment> _payments =  Webservice(apiKey: your_api_key).load(Payment.all, offset: 0);
+Future List<Payment> _payments =  BeyonicService(apiKey: your_api_key).load(Payment.all, offset: 0);
 
 // load single payment
-Future Payment _payment =  Webservice(apiKey: your_api_key).load(Payment.single);
+Future <Payment> _payment =  BeyonicService(apiKey: your_api_key).load(Payment.single);
 
 // create payment
-Future Payment _payment =  Webservice(apiKey: your_api_key).create(Payment.create, params);
+Future <Payment> _payment =  BeyonicService(apiKey: your_api_key).create(Payment.create, params);
 
 ```

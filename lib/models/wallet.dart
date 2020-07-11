@@ -18,16 +18,13 @@ class Wallet {
   }
 
   static Resource<List<Wallet>> get all {
-
     return Resource(
         path: "accounts",
         parse: (response) {
           final result = json.decode(response.body);
           Iterable list = result['results'];
           return list.map((model) => Wallet.fromJson(model)).toList();
-        }
-    );
-
+        });
   }
 
   static Resource<Wallet> get single {
@@ -39,5 +36,4 @@ class Wallet {
       },
     );
   }
-
 }
