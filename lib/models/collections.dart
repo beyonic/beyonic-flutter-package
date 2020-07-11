@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:beyonic_flutter_library/webservice.dart';
+import 'package:beyonic_flutter_library/beyonicservice.dart';
 
 class Collection {
   final String id;

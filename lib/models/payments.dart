@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:beyonic_flutter_library/webservice.dart';
+import 'package:beyonic_flutter_library/beyonicservice.dart';
 
 import 'recipient.dart';
 
@@ -15,6 +15,7 @@ class Payment {
   final String paymentType;
   final String chargedFee;
   final Iterable phoneNos;
+  final String path = "payments";
 
   Payment({this.id, this.description, this.amount, this.currency, this.state,
     this.lastError, this.pausedReason, this.modified, this.paymentType, this.chargedFee,
@@ -37,10 +38,10 @@ class Payment {
     );
   }
 
-  static Resource<List<Payment>> get all {
+  Resource<List<Payment>> get all {
 
     return Resource(
-        path: "payments",
+        path: this.path,
         parse: (response) {
           final result = json.decode(response.body);
           Iterable list = result['results'];
@@ -49,13 +50,23 @@ class Payment {
     );
   }
 
-  static Resource<Payment> get single {
+  Resource<Payment> get single {
     return Resource(
-      path: "payments",
+      path: this.path,
       parse: (response) {
         final result = json.decode(response.body);
         return Payment.fromJson(result);
       },
+    );
+  }
+
+  Resource<Payment> get create {
+    return Resource(
+        path: this.path,
+        parse: (response) {
+          final model = json.decode(response.body);
+          return Payment.fromJson(model);
+        }
     );
   }
 }

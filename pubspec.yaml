@@ -1,8 +1,7 @@
 name: beyonic_flutter_library
-description: A new Flutter package project.
+description: Flutter package to use Beyonic APIs
 version: 0.0.1
-author:
-homepage:
+homepage: https://apidocs.beyonic.com
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -10,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  http:
+  http: ^0.12.1
 
 dev_dependencies:
   flutter_test:
