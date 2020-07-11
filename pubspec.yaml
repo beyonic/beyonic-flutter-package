@@ -1,6 +1,6 @@
 name: beyonic_flutter_library
 description: Flutter package to use Beyonic APIs
-version: 0.0.3
+version: 0.0.4
 homepage: https://apidocs.beyonic.com
 
 environment:

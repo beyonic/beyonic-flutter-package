@@ -15,7 +15,7 @@ class Payment {
   final String paymentType;
   final String chargedFee;
   final Iterable phoneNos;
-  final String path = "payments";
+  String path = "payments";
 
   Payment(
       {this.id,
@@ -49,9 +49,9 @@ class Payment {
     );
   }
 
-  Resource<List<Payment>> get all {
+  static Resource<List<Payment>> get all {
     return Resource(
-        path: this.path,
+        path: "payments",
         parse: (response) {
           final result = json.decode(response.body);
           Iterable list = result['results'];
@@ -59,9 +59,9 @@ class Payment {
         });
   }
 
-  Resource<Payment> get single {
+  static Resource<Payment> get single {
     return Resource(
-      path: this.path,
+      path: "payments",
       parse: (response) {
         final result = json.decode(response.body);
         return Payment.fromJson(result);
@@ -69,9 +69,9 @@ class Payment {
     );
   }
 
-  Resource<Payment> get create {
+  static Resource<Payment> get create {
     return Resource(
-        path: this.path,
+        path: "payments",
         parse: (response) {
           final model = json.decode(response.body);
           return Payment.fromJson(model);
