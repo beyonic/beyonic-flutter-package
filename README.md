@@ -7,7 +7,7 @@ Flutter package for using the Beyonic APIs
 You can call the various objects as outlined below:
 
 ```dart
-import 'package:beyonic_flutter_library/beyonicservice.dart';
+import 'package:beyonic_flutter/beyonicservice.dart';
 
 // load list of payments
 Future List<Payment> _payments =  BeyonicService(apiKey: your_api_key).load(Payment.all, offset: 0);

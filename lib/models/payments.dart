@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:beyonic_flutter_library/beyonicservice.dart';
+import 'package:beyonic_flutter/beyonicservice.dart';
 
 import 'recipient.dart';
 
