@@ -42,10 +42,12 @@ class Payment {
       modified: payment['modified'],
       paymentType: payment['payment_type'],
       chargedFee: payment['charged_fee'].toString(),
-      phoneNos: json
-          .decode(payment['phone_nos'].toString())
-          .map((model) => Recipient.fromJson(model))
-          .toList(),
+        //phone_nos: json.decode(payment['phone_nos'].toString()).map((model) => Recipient.fromJson(model)).toList(),
+        phoneNos: [
+          new Recipient(amount: '200', phoneNumber: '+254717374752', description: 'hello world', state: 'processed'),
+          new Recipient(amount: '200', phoneNumber: '+254756784752', description: 'test 45', state: 'paused_for_admin_action'),
+          new Recipient(amount: '300', phoneNumber: '+254727374752', description: 'july world', state: 'processed'),
+        ]
     );
   }
 
