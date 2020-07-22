@@ -3,14 +3,16 @@ import 'dart:convert';
 import 'package:beyonic_flutter/beyonicservice.dart';
 
 class Wallet {
+  final String id;
   final String currency;
   final String balance;
   final String modified;
 
-  Wallet({this.currency, this.balance, this.modified});
+  Wallet({this.id, this.currency, this.balance, this.modified});
 
   factory Wallet.fromJson(Map<String, dynamic> json) {
     return Wallet(
+      id: json['id'].toString(),
       currency: json['currency'],
       balance: json['balance'].toString(),
       modified: json['modified'],
