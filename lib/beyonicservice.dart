@@ -18,7 +18,7 @@ class BeyonicService {
   BeyonicService({this.apiKey});
 
   Future<T> load<T>(Resource<T> resource,
-      {limit = 20, offset = 0, object_id}) async {
+      {limit = 20, offset = 0, object_id, filter}) async {
     Map<String, String> headers = {
       "Content-type": "application/json",
       "Authorization": "Token " + this.apiKey
@@ -32,6 +32,9 @@ class BeyonicService {
           limit.toString() +
           "&offset=" +
           offset.toString();
+      if(filter != null){
+        url += "&" + filter;
+      }
     } else {
       // We are loading a read view
       url = apiBaseUrl + resource.path + "/" + object_id;
