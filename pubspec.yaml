@@ -1,6 +1,6 @@
 name: beyonic_flutter
 description: Flutter package to use Beyonic APIs
-version: 0.0.6
+version: 0.0.7
 homepage: https://apidocs.beyonic.com
 
 environment:
