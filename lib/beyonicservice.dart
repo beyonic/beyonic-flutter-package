@@ -28,7 +28,7 @@ class BeyonicService {
       // We are loading a list view
       url = apiBaseUrl +
           resource.path +
-          "?limit=" +
+          "?ordering=-created&limit=" +
           limit.toString() +
           "&offset=" +
           offset.toString();
