@@ -18,4 +18,7 @@ Future <Payment> _payment =  BeyonicService(apiKey: your_api_key).load(Payment.s
 // create payment
 Future <Payment> _payment =  BeyonicService(apiKey: your_api_key).create(Payment.create, params);
 
+// load list of contacts
+Future <Contact> _payment =  BeyonicService(apiKey: your_api_key).load(Contact.all, offset: 0);
+
 ```
