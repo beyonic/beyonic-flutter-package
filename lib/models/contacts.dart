@@ -62,8 +62,7 @@ class Contact {
     return Resource(
         path: "contacts",
         parse: (response) {
-          final result = json.decode(response.body);
-          dynamic model = result['results'][0];
+          final model = json.decode(response.body);
           return Contact.fromJson(model);
         });
   }
