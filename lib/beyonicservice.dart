@@ -56,6 +56,7 @@ class BeyonicService {
       },
       body: jsonEncode(params),
     );
+
     if (response.statusCode == 201) {
       return resource.parse(response);
     } else {

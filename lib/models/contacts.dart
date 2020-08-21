@@ -47,11 +47,23 @@ class Contact {
         });
   }
 
+
+  static Resource<Contact> get single {
+    return Resource(
+      path: "contacts",
+      parse: (response) {
+        final result = json.decode(response.body);
+        return Contact.fromJson(result);
+      },
+    );
+  }
+
   static Resource<Contact> get create {
     return Resource(
         path: "contacts",
         parse: (response) {
-          final model = json.decode(response.body);
+          final result = json.decode(response.body);
+          dynamic model = result['results'][0];
           return Contact.fromJson(model);
         });
   }
